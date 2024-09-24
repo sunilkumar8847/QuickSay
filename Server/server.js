@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import authRouter from './routes/auth.routes.js';
 import messageRouter from './routes/message.routes.js';
@@ -10,9 +11,10 @@ import mongodbconnect from './db/mongodbconnect.js';
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
 dotenv.config();
+const PORT = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
